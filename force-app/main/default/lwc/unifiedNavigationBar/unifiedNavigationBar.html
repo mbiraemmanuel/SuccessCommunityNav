@@ -1,0 +1,90 @@
+<template>
+    <!-- Mobile Overlay Menu -->
+    <template if:true={isMobileMenuOpen}>
+        <div class="mobile-overlay" onclick={closeMobileMenu}>
+            <div class="mobile-menu-panel" onclick={stopPropagation}>
+                <!-- Mobile Header with Logo and Close Button -->
+                <div class="mobile-header">
+                    <a href={homeUrl} onclick={navigateHome} class="mobile-logo-link">
+                        <img src={mobileLogo} alt="Logo" class="mobile-logo-img" />
+                    </a>
+                    <button class="mobile-close-btn" onclick={closeMobileMenu} aria-label="Close navigation menu">
+                        <lightning-icon icon-name="utility:close" alternative-text="Close" size="medium"></lightning-icon>
+                    </button>
+                </div>
+                
+                <!-- Mobile Navigation List -->
+                <nav role="navigation" aria-label="Mobile navigation">
+                    <ul class="mobile-menu-list">
+                        <template for:each={navigationItems} for:item="navItem">
+                            <li key={navItem.id} class="mobile-menu-item">
+                                <a href={navItem.url} 
+                                   class={navItem.linkClass}
+                                   onclick={handleMobileNavigation}
+                                   data-item-id={navItem.id}>
+                                    {navItem.label}
+                                </a>
+                            </li>
+                        </template>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </template>
+
+    <!-- Main Navigation Bar (Desktop) -->
+    <header class="nav-header" role="banner">
+        <div class="nav-container">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <a href={homeUrl} onclick={navigateHome} class="logo-link" aria-label="Home">
+                    <img src={desktopLogo} alt="Logo" class="logo-img" />
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation Menu -->
+            <nav role="navigation" aria-label="Main navigation" class="desktop-nav">
+                <ul class="nav-menu">
+                    <template for:each={navigationItems} for:item="navItem">
+                        <li key={navItem.id} class="nav-menu-item">
+                            <a href={navItem.url}
+                               class={navItem.linkClass}
+                               onclick={handleDesktopNavigation}
+                               data-item-id={navItem.id}>
+                                {navItem.label}
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="mobile-toggle">
+                <button class="mobile-toggle-btn" onclick={openMobileMenu} aria-label="Open navigation menu">
+                    <lightning-icon icon-name="utility:rows" alternative-text="Menu" size="medium"></lightning-icon>
+                </button>
+            </div>
+            
+            <!-- User Profile Section -->
+            <div class="user-profile-section">
+                <button class="user-profile-btn" onclick={handleUserProfileClick} aria-label="User menu">
+                    <lightning-icon icon-name="standard:user" alternative-text="User" size="small"></lightning-icon>
+                </button>
+                
+                <!-- Profile Dropdown Menu -->
+                <template if:true={isProfileDropdownOpen}>
+                    <div class="profile-dropdown">
+                        <div class="profile-dropdown-header">
+                            <lightning-icon icon-name="standard:user" alternative-text="User" size="small"></lightning-icon>
+                            <span class="profile-user-name">{currentUserName}</span>
+                        </div>
+                        <hr class="profile-divider"/>
+                        <button class="profile-logout-btn" onclick={handleLogout}>
+                            Logout
+                        </button>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </header>
+</template>

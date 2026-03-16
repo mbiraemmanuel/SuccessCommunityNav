@@ -1,0 +1,54 @@
+<template>
+    testing
+    <!-- Vertical Navigation List for Mobile -->
+    <template if:true={showHamburgerMenu}>
+        <div class="slds-is-fixed slds-grid hamburger-menu-container">
+            <div class="slds-col slds-size_5-of-6">
+                <div class="slds-grid slds-var-p-left_small slds-var-p-top_small slds-grid_vertical hamburger-menu">
+                    <div class="slds-col">
+                        <span>
+                            <nav role="navigation" class="slds-nav-vertical">
+                                <ul class="slds-has-block-links_space">
+                                    <template for:each={menuItems} for:item="item">
+                                        <li key={item.id} class="navbar-items">
+                                            <!-- <a href={item.target}>{item.label}</a> -->
+                                            <c-navigation-menu-item item={item}></c-navigation-menu-item>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </nav>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <a href={href} onclick={handleHamburgerMenuToggle}>
+                    <img class="hamburger-menu-icon slds-var-p-left_small slds-var-p-top_small" src={xIcon} />
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <template if:false={showHamburgerMenu}>
+        <div class="navbar">
+            <div class="navbar-contents">
+                <nav role="navigation">
+                    <ul class="slds-list_horizontal slds-has-block-links_space">
+                        <template for:each={menuItems} for:item="item">
+                            <li key={item.id} class="navbar-items slds-var-p-horizontal_large">
+                                <!-- <a href={item.target} class="navbar-item-link">{item.label}</a> -->
+                                <c-navigation-menu-item item={item} onnavigation={handleNavigation}></c-navigation-menu-item>
+
+                            </li>
+                        </template>
+                    </ul>
+                </nav>
+            </div>
+            <div class="hamburger">
+                <a class="slds-float_left" href={href} onclick={handleHamburgerMenuToggle}>
+                    <img class="hamburger-menu-icon" style="height: 2em;" src={hamburgerIcon} />
+                </a>
+            </div>
+        </div>
+    </template>
+</template>

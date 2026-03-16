@@ -1,0 +1,16 @@
+:host {
+    --dxp-g-brand-1: #989898;
+    --dxp-c-anchor-text-decoration-hover: none;
+}
+.navbar-item-link {
+    color: white; /* Green color for active link */
+    font-size: 14px;
+}
+.navbar-item-link.active, .navbar-item-link:hover {
+    color: #66bb6a; /* Green color for active link */
+    border-bottom: 2px solid #66bb6a; /* Green underline for active link */
+}
+/* .navbar-item-link:hover {
+    color: #005fb2;
+    text-decoration: underline;
+} */

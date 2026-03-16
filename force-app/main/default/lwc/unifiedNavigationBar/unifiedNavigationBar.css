@@ -1,0 +1,439 @@
+/* ============================================================================
+   UNIFIED NAVIGATION BAR - MAIN STYLES
+   A clean, modern, and responsive navigation component
+   ============================================================================ */
+
+/* ============================================================================
+   DESKTOP NAVIGATION
+   ============================================================================ */
+
+.nav-header {
+    background-color: #013a81;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+/* ============================================================================
+   LOGO SECTION
+   ============================================================================ */
+
+.logo-section {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    max-width: 250px;
+    display: block;
+    object-fit: contain;
+}
+
+/* ============================================================================
+   DESKTOP NAVIGATION MENU
+   ============================================================================ */
+
+.desktop-nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin: 0 2rem;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.nav-menu-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #66bb6a;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #66bb6a;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link.active {
+    color: #66bb6a;
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* ============================================================================
+   MOBILE TOGGLE BUTTON
+   ============================================================================ */
+
+.mobile-toggle {
+    display: none;
+}
+
+.mobile-toggle-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.mobile-toggle-btn:hover {
+    transform: scale(1.1);
+}
+
+.mobile-toggle-btn:focus {
+    outline: 2px solid #66bb6a;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ============================================================================
+   USER PROFILE SECTION
+   ============================================================================ */
+
+.user-profile-section {
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.user-profile-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.user-profile-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.user-profile-btn:focus {
+    outline: 2px solid #66bb6a;
+    outline-offset: 2px;
+}
+
+/* Profile Dropdown Menu */
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #d8dde6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    z-index: 10000;
+    padding: 0;
+    animation: fadeInDropdown 0.2s ease;
+}
+
+@keyframes fadeInDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    color: #1a1a1a;
+}
+
+.profile-user-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.profile-divider {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+}
+
+.profile-logout-btn {
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 0 0 8px 8px;
+}
+
+.profile-logout-btn:hover {
+    background-color: #f4f6f9;
+}
+
+.profile-logout-btn:focus {
+    outline: 2px solid #1b96ff;
+    outline-offset: -2px;
+}
+
+/* ============================================================================
+   MOBILE OVERLAY & MENU
+   ============================================================================ */
+
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.mobile-menu-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    background-color: #013a81;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* ============================================================================
+   MOBILE HEADER
+   ============================================================================ */
+
+.mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-logo-img {
+    height: 35px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+.mobile-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================================================
+   MOBILE NAVIGATION LIST
+   ============================================================================ */
+
+.mobile-menu-list {
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+}
+
+.mobile-menu-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu-item .nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.mobile-menu-item .nav-link::after {
+    display: none;
+}
+
+.mobile-menu-item .nav-link:hover,
+.mobile-menu-item .nav-link.active {
+    background-color: rgba(102, 187, 106, 0.1);
+    color: #66bb6a;
+    padding-left: 2rem;
+}
+
+/* ============================================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================================ */
+
+/* Tablet and below */
+@media (max-width: 1024px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .mobile-toggle {
+        display: block;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+        height: 56px;
+    }
+    
+    .logo-img {
+        height: 32px;
+    }
+    
+    .mobile-menu-panel {
+        width: 85%;
+    }
+    
+    .user-profile-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 0.75rem;
+        height: 52px;
+    }
+    
+    .logo-img {
+        height: 28px;
+    }
+    
+    .mobile-menu-panel {
+        width: 90%;
+    }
+    
+    .mobile-menu-item .nav-link {
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY & FOCUS STATES
+   ============================================================================ */
+
+.nav-link:focus,
+.logo-link:focus {
+    outline: 2px solid #66bb6a;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+.mobile-close-btn:focus {
+    outline: 2px solid #66bb6a;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+    .mobile-toggle,
+    .mobile-overlay {
+        display: none;
+    }
+}

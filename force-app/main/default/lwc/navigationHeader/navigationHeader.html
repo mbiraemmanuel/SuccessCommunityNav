@@ -1,0 +1,83 @@
+<template>
+    <!-- Mobile Hamburger Menu -->
+    <template if:true={showMobileMenu}>
+        <div class="mobile-menu-overlay slds-is-fixed">
+            <div class="mobile-menu-container slds-grid">
+                <div class="mobile-menu-content slds-col slds-size_5-of-6">
+                    <div class="slds-grid slds-grid_vertical slds-var-p-around_medium">
+                        <!-- Mobile Logo -->
+                        <div class="slds-col mobile-logo-container">
+                            <a href={homeUrl} onclick={handleLogoClick}>
+                                <img src={mobileLogo} alt="Logo" class="mobile-logo" />
+                            </a>
+                        </div>
+                        
+                        <!-- Mobile Navigation -->
+                        <nav role="navigation" class="slds-col slds-var-m-top_medium">
+                            <ul class="mobile-nav-list">
+                                <template for:each={menuItems} for:item="item">
+                                    <li key={item.id} class="mobile-nav-item">
+                                        <a href={item.href} 
+                                           onclick={handleMobileClick}
+                                           data-target={item.target}
+                                           data-type={item.type}
+                                           data-object={item.defaultListViewId}
+                                           data-label={item.label}
+                                           class={item.cssClass}>
+                                            {item.label}
+                                        </a>
+                                    </li>
+                                </template>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                
+                <!-- Close Button -->
+                <div class="slds-col slds-size_1-of-6 close-button-container">
+                    <button class="close-button" onclick={toggleMobileMenu} aria-label="Close menu">
+                        <img src={xIcon} alt="Close" class="icon" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Desktop Navigation -->
+    <div class="navbar">
+        <div class="navbar-container">
+            <!-- Logo -->
+            <div class="navbar-logo">
+                <a href={homeUrl} onclick={handleLogoClick}>
+                    <img src={desktopLogo} alt="Logo" class="logo" />
+                </a>
+            </div>
+            
+            <!-- Desktop Menu Items -->
+            <nav role="navigation" class="navbar-nav">
+                <ul class="navbar-list">
+                    <template for:each={menuItems} for:item="item">
+                        <li key={item.id} class="navbar-item">
+                            <a href={item.href}
+                               onclick={handleNavClick}
+                               data-target={item.target}
+                               data-type={item.type}
+                               data-object={item.defaultListViewId}
+                               data-label={item.label}
+                               class={item.cssClass}>
+                                {item.label}
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </nav>
+            
+            <!-- Hamburger Menu Button -->
+            <div class="hamburger-button">
+                <button onclick={toggleMobileMenu} aria-label="Open menu" class="hamburger-btn">
+                    <img src={hamburgerIcon} alt="Menu" class="icon" />
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
