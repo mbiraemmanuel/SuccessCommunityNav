@@ -85,6 +85,26 @@
     text-decoration: underline;
 }
 
+/* Voicebrook Pathways Button */
+.pathways-btn {
+    background-color: #66bb6a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.pathways-btn:hover {
+    background-color: #4caf50;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
 /* ============================================================================
    BOTTOM LEVEL - NAVIGATION MENU
    ============================================================================ */
@@ -433,6 +453,10 @@
     }
     
     .website-link {
+        display: none;
+    }
+    
+    .pathways-btn {
         display: none;
     }
 }
