@@ -32,58 +32,73 @@
         </div>
     </template>
 
-    <!-- Main Navigation Bar (Desktop) -->
+    <!-- Main Navigation Bar (Desktop) - Two Level Design -->
     <header class="nav-header" role="banner">
-        <div class="nav-container">
-            <!-- Logo Section -->
-            <div class="logo-section">
-                <a href={homeUrl} onclick={navigateHome} class="logo-link" aria-label="Home">
-                    <img src={desktopLogo} alt="Logo" class="logo-img" />
-                </a>
-            </div>
-            
-            <!-- Desktop Navigation Menu -->
-            <nav role="navigation" aria-label="Main navigation" class="desktop-nav">
-                <ul class="nav-menu">
-                    <template for:each={navigationItems} for:item="navItem">
-                        <li key={navItem.id} class="nav-menu-item">
-                            <a href={navItem.url}
-                               class={navItem.linkClass}
-                               onclick={handleDesktopNavigation}
-                               data-item-id={navItem.id}>
-                                {navItem.label}
-                            </a>
-                        </li>
-                    </template>
-                </ul>
-            </nav>
-            
-            <!-- Mobile Menu Button -->
-            <div class="mobile-toggle">
-                <button class="mobile-toggle-btn" onclick={openMobileMenu} aria-label="Open navigation menu">
-                    <lightning-icon icon-name="utility:rows" alternative-text="Menu" size="medium"></lightning-icon>
-                </button>
-            </div>
-            
-            <!-- User Profile Section -->
-            <div class="user-profile-section">
-                <button class="user-profile-btn" onclick={handleUserProfileClick} aria-label="User menu">
-                    <lightning-icon icon-name="standard:user" alternative-text="User" size="small"></lightning-icon>
-                </button>
+        <!-- Top Level: Logo and Profile -->
+        <div class="nav-top-level">
+            <div class="nav-top-container">
+                <!-- Logo Section (Centered) -->
+                <div class="logo-section">
+                    <a href={homeUrl} onclick={navigateHome} class="logo-link" aria-label="Home">
+                        <img src={desktopLogo} alt="Voicebrook Logo" class="logo-img" />
+                    </a>
+                </div>
                 
-                <!-- Profile Dropdown Menu -->
-                <template if:true={isProfileDropdownOpen}>
-                    <div class="profile-dropdown">
-                        <div class="profile-dropdown-header">
-                            <lightning-icon icon-name="standard:user" alternative-text="User" size="small"></lightning-icon>
-                            <span class="profile-user-name">{currentUserName}</span>
-                        </div>
-                        <hr class="profile-divider"/>
-                        <button class="profile-logout-btn" onclick={handleLogout}>
-                            Logout
+                <!-- Right Section: Website Link and Profile -->
+                <div class="nav-top-right">
+                    <a href="https://voicebrook.com" target="_blank" rel="noopener noreferrer" class="website-link">
+                        VOICEBROOK.COM
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <div class="mobile-toggle">
+                        <button class="mobile-toggle-btn" onclick={openMobileMenu} aria-label="Open navigation menu">
+                            <lightning-icon icon-name="utility:rows" alternative-text="Menu" size="medium"></lightning-icon>
                         </button>
                     </div>
-                </template>
+                    
+                    <!-- User Profile Section -->
+                    <div class="user-profile-section">
+                        <button class="user-profile-btn" onclick={handleUserProfileClick} aria-label="User menu">
+                            <lightning-icon icon-name="standard:user" alternative-text="User" size="small"></lightning-icon>
+                        </button>
+                        
+                        <!-- Profile Dropdown Menu -->
+                        <template if:true={isProfileDropdownOpen}>
+                            <div class="profile-dropdown">
+                                <div class="profile-dropdown-header">
+                                    <lightning-icon icon-name="standard:user" alternative-text="User" size="small"></lightning-icon>
+                                    <span class="profile-user-name">{currentUserName}</span>
+                                </div>
+                                <hr class="profile-divider"/>
+                                <button class="profile-logout-btn" onclick={handleLogout}>
+                                    Logout
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Level: Navigation Menu -->
+        <div class="nav-bottom-level">
+            <div class="nav-bottom-container">
+                <!-- Desktop Navigation Menu -->
+                <nav role="navigation" aria-label="Main navigation" class="desktop-nav">
+                    <ul class="nav-menu">
+                        <template for:each={navigationItems} for:item="navItem">
+                            <li key={navItem.id} class="nav-menu-item">
+                                <a href={navItem.url}
+                                   class={navItem.linkClass}
+                                   onclick={handleDesktopNavigation}
+                                   data-item-id={navItem.id}>
+                                    {navItem.label}
+                                </a>
+                            </li>
+                        </template>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>

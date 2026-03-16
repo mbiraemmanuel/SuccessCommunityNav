@@ -1,39 +1,48 @@
 /* ============================================================================
-   UNIFIED NAVIGATION BAR - MAIN STYLES
-   A clean, modern, and responsive navigation component
+   UNIFIED NAVIGATION BAR - TWO LEVEL DESIGN
+   Top Level: Logo (centered) + Website Link + Profile (right)
+   Bottom Level: Navigation Items
    ============================================================================ */
 
 /* ============================================================================
-   DESKTOP NAVIGATION
+   MAIN HEADER CONTAINER
    ============================================================================ */
 
 .nav-header {
-    background-color: #013a81;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
     z-index: 100;
     width: 100%;
-}
-
-.nav-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 60px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* ============================================================================
-   LOGO SECTION
+   TOP LEVEL - LOGO AND PROFILE
+   ============================================================================ */
+
+.nav-top-level {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.nav-top-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* ============================================================================
+   LOGO SECTION (Centered)
    ============================================================================ */
 
 .logo-section {
-    flex-shrink: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .logo-link {
@@ -43,11 +52,51 @@
 }
 
 .logo-img {
-    height: 45px;
+    height: 40px;
     width: auto;
-    max-width: 250px;
+    max-width: 200px;
     display: block;
     object-fit: contain;
+}
+
+/* ============================================================================
+   TOP RIGHT SECTION - Website Link + Profile
+   ============================================================================ */
+
+.nav-top-right {
+    position: absolute;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.website-link {
+    color: #013a81;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.website-link:hover {
+    color: #66bb6a;
+    text-decoration: underline;
+}
+
+/* ============================================================================
+   BOTTOM LEVEL - NAVIGATION MENU
+   ============================================================================ */
+
+.nav-bottom-level {
+    background-color: #013a81;
+}
+
+.nav-bottom-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 /* ============================================================================
@@ -55,10 +104,8 @@
    ============================================================================ */
 
 .desktop-nav {
-    flex: 1;
     display: flex;
     justify-content: center;
-    margin: 0 2rem;
 }
 
 .nav-menu {
@@ -67,7 +114,7 @@
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 3rem;
 }
 
 .nav-menu-item {
@@ -77,10 +124,10 @@
 .nav-link {
     color: #ffffff;
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0;
     display: inline-block;
     position: relative;
     transition: color 0.3s ease;
@@ -93,13 +140,13 @@
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 3px;
     background-color: #66bb6a;
     transition: width 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #66bb6a;
+    color: #ffffff;
 }
 
 .nav-link:hover::after {
@@ -107,7 +154,7 @@
 }
 
 .nav-link.active {
-    color: #66bb6a;
+    color: #ffffff;
 }
 
 .nav-link.active::after {
@@ -127,7 +174,7 @@
     border: none;
     cursor: pointer;
     padding: 0.5rem;
-    color: #ffffff;
+    color: #013a81;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,7 +186,7 @@
 }
 
 .mobile-toggle-btn:focus {
-    outline: 2px solid #66bb6a;
+    outline: 2px solid #013a81;
     outline-offset: 2px;
     border-radius: 4px;
 }
@@ -149,34 +196,32 @@
    ============================================================================ */
 
 .user-profile-section {
-    margin-left: 1rem;
     display: flex;
     align-items: center;
     position: relative;
 }
 
 .user-profile-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #e8eaf6;
+    border: 2px solid #013a81;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #ffffff;
+    color: #013a81;
 }
 
 .user-profile-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: #c5cae9;
     transform: scale(1.05);
 }
 
 .user-profile-btn:focus {
-    outline: 2px solid #66bb6a;
+    outline: 2px solid #013a81;
     outline-offset: 2px;
 }
 
@@ -365,16 +410,27 @@
         display: none;
     }
     
+    .nav-bottom-level {
+        display: none;
+    }
+    
     .mobile-toggle {
         display: block;
+    }
+    
+    .website-link {
+        display: none;
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    .nav-container {
-        padding: 0 1rem;
-        height: 56px;
+    .nav-top-container {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-top-right {
+        right: 1rem;
     }
     
     .logo-img {
@@ -386,15 +442,18 @@
     }
     
     .user-profile-btn {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
     }
 }
 
 @media (max-width: 480px) {
-    .nav-container {
-        padding: 0 0.75rem;
-        height: 52px;
+    .nav-top-container {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .nav-top-right {
+        right: 0.75rem;
     }
     
     .logo-img {
