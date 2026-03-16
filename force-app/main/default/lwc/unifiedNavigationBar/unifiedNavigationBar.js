@@ -9,7 +9,8 @@ import basePath from '@salesforce/community/basePath';
 // User fields
 import USER_NAME_FIELD from '@salesforce/schema/User.Name';
 
-// Static Resources - Desktop Logos
+// Static Resources - Logos
+import VOICEBROOK_LOGO from '@salesforce/resourceUrl/Logo';
 import DESKTOP_AGENT_LOGO from '@salesforce/resourceUrl/menuLogoAgent';
 import DESKTOP_CUSTOMER_LOGO from '@salesforce/resourceUrl/menuLogoCustomer';
 import DESKTOP_DEFAULT_LOGO from '@salesforce/resourceUrl/azinsurancelogo';
@@ -423,42 +424,36 @@ export default class UnifiedNavigationBar extends NavigationMixin(LightningEleme
     }
 
     /**
-     * Get desktop logo based on logoType (defaults to Voicebrook/customer logo)
+     * Get desktop logo based on logoType (defaults to Voicebrook logo)
      */
     get desktopLogo() {
         const type = this.logoType || 'customer';
         
-        // Use dynamic base URL for flexibility across environments
-        const baseUrl = window.location.origin;
-        
         switch (type.toLowerCase()) {
             case 'agent':
-                return DESKTOP_AGENT_LOGO;
+                return DESKTOP_AGENT_LOGO || VOICEBROOK_LOGO;
             case 'customer':
             case 'default':
             default:
-                // All default to customer/Voicebrook logo
-                return DESKTOP_CUSTOMER_LOGO || `${baseUrl}/resource/menuLogoCustomer`;
+                // All default to Voicebrook logo
+                return VOICEBROOK_LOGO;
         }
     }
 
     /**
-     * Get mobile logo based on logoType (defaults to Voicebrook/customer logo)
+     * Get mobile logo based on logoType (defaults to Voicebrook logo)
      */
     get mobileLogo() {
         const type = this.logoType || 'customer';
         
-        // Use dynamic base URL for flexibility across environments
-        const baseUrl = window.location.origin;
-        
         switch (type.toLowerCase()) {
             case 'agent':
-                return MOBILE_AGENT_LOGO;
+                return MOBILE_AGENT_LOGO || VOICEBROOK_LOGO;
             case 'customer':
             case 'default':
             default:
-                // All default to customer/Voicebrook logo
-                return MOBILE_CUSTOMER_LOGO || `${baseUrl}/resource/customerHamburgerMenuLogo`;
+                // All default to Voicebrook logo  
+                return VOICEBROOK_LOGO;
         }
     }
 }
