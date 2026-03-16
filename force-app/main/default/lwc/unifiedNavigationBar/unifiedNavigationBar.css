@@ -406,6 +406,10 @@
 
 /* Tablet and below */
 @media (max-width: 1024px) {
+    .nav-top-container {
+        justify-content: space-between;
+    }
+    
     .desktop-nav {
         display: none;
     }
@@ -414,8 +418,18 @@
         display: none;
     }
     
+    .nav-top-right {
+        position: static;
+        margin-left: auto;
+    }
+    
     .mobile-toggle {
         display: block;
+        order: 1;
+    }
+    
+    .user-profile-section {
+        order: 0;
     }
     
     .website-link {
